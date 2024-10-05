@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const low = require("lowdb");
-//const usuariodocenteRouter = require("./routes/usuariodocente"); // Cambiado a usuariodocenteRouter
+const soporteRouter = require("./routes/soporte"); // Cambiado de progresoRouter a soporteRouter
 
 // Determinamos el puerto del EndPoint
 const PORT = process.env.PORT || 10801;
@@ -16,7 +16,7 @@ const adapter = new FileSync("db.json");
 const db = low(adapter);
 
 // Inicializamos la BD
-db.defaults({ usuariodocente: [] }).write(); // Cambiado a usuariodocente
+db.defaults({ soporte: [] }).write(); // Cambiado de progreso a soporte
 
 const app = express(); // Creamos el aplicativo 
 
@@ -30,7 +30,7 @@ app.use(morgan("dev"));
 // Mostramos el log de ejecución del servidor
 app.listen(PORT, () => console.log(`El servidor está corriendo en el puerto ${PORT}`));
 
-/*const options = {
+const options = {
     definition: {
         openapi: "3.0.0",
         info: {
@@ -47,5 +47,5 @@ app.listen(PORT, () => console.log(`El servidor está corriendo en el puerto ${P
     apis: ["./routes/*.js"]
 };
 
-// Reemplazamos el router de usuarios por el de usuariodocente
-app.use("/usuariodocente", usuariodocenteRouter); // Cambiado a /usuariodocente*/
+// Reemplazamos el router de progreso por el de soporte
+app.use("/soporte", soporteRouter); // Cambiado de progreso a soporte

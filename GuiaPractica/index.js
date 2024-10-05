@@ -22,7 +22,7 @@ db.defaults({articulos: [] }).write();
 
 const app = express(); //Creamos el aplicativo 
 
-app.db =db; //Definimos el DB
+app.db =db; //Definimos el DBÑ
 
 //Definimos las variables necesarias.
 app.use(cors());
